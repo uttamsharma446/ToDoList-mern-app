@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const todoRoute = require("./Backend/Routes/todoRoute");
+const todoRoute = require("./Routes/todoRoute");
 const mongoose = require("mongoose");
 const path = require("path");
 var cors = require('cors');
