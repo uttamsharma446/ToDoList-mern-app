@@ -18,7 +18,7 @@ router.post("/add-item",function(req,res){
 });
 
 //to display all item 
-router.get("/items",function(req,res){
+router.get("/",function(req,res){
     todo.find(function(err,data){
         if(!err)
         {

@@ -16,7 +16,7 @@ function Home() {
 
     //to load all item from data using useEffect
     useEffect(() => {
-        Axios.get("http://localhost:5000/items")
+        Axios.get("http://localhost:5000/")
             .then(d => {
                 setAllToDoItem(d.data);
                 console.log(d.data);
