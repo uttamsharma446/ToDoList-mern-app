@@ -10,6 +10,7 @@ function Login() {
         password: "",
     })
     const [getId, setId] = useState("");
+    const [status,setStatus]=useState("");
     const handleLogin = (e) => {
 
         try {
@@ -17,11 +18,11 @@ function Login() {
                 .then(result => {
                     if (result.data) {
                         cookies.set("ID", result.data._id, { path: "/" });
-                        alert("login successfully");
+                        setStatus("login successfully")
                         window.location="/"
                     }
                     else {
-                        alert("username or password wrong")
+                        setStatus("username or password is incorrect")
                     }
 
                 })
@@ -37,6 +38,7 @@ function Login() {
         e.preventDefault(false)
     }
     const handleLoginChange = (e) => {
+        setStatus("");
         const { value, name } = e.target;
         setLoginData(prev => {
             return {
@@ -50,7 +52,7 @@ function Login() {
         <div className="container">
             <div className="main login-form">
                 <div>
-
+                   <small style={{color:"red"}}>{status}</small>
                     <form onSubmit={handleLogin}>
                         <label>Username</label> <br />
                         <input

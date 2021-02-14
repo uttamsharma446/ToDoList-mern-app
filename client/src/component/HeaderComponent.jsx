@@ -47,7 +47,7 @@ function HeaderComponent() {
     }
 const handleLogout=()=>{
     cookies.remove("ID");
-    window.location="/"
+    window.location="/login"
 }
     return <React.Fragment>
 
