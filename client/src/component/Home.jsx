@@ -16,7 +16,7 @@ function Home() {
 
     //to load all item from data using useEffect
     useEffect(() => {
-        Axios.get("http://localhost:5000/")
+        Axios.get("http://localhost:5000/get-item")
             .then(d => {
                 setAllToDoItem(d.data);
                 console.log(d.data);
@@ -37,8 +37,9 @@ function Home() {
     const handleAddItem = (e) => {
         setAllToDoItem(prev => {
             return [
-                ...prev,
-                addItem
+                addItem,
+                ...prev
+               
             ]
         })
 
@@ -78,11 +79,7 @@ function Home() {
                 </div>
                 <div className="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                     <ListGroup>
-                        <ListGroupItem color="">
-
-                            <Input type="text" name="searchInput" id="search" placeholder="Search.." />
-
-                        </ListGroupItem>
+                       
                         {allToDoItem.map((data) => {
                             return <ListGroupItem color="">{data.item}<Button onClick={() => handleDelete(data._id)} style={{ float: "right" }} outline size="sm" color="danger"><i class="fa fa-times" aria-hidden="true"></i></Button> </ListGroupItem>
 

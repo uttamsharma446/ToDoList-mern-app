@@ -17,7 +17,19 @@ router.post("/add-item",function(req,res){
     })
 });
 
+router.get("/get-item",function(req,res){
+      todo.find({},(err,result)=>{
+          if(!err)
+          {
+              res.send(result);
+          }
+          else
+          {
+              res.send(err);
+          }
 
+      })
+})
 
 //to delete a specific item for todo list
 router.delete("/item/:id",function(req,res){
