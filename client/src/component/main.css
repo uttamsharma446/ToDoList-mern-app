@@ -1,0 +1,21 @@
+
+.btn1{
+    margin:10px 0;
+    width:200px;
+}
+.login-form .login-input{
+    width:200px;
+
+
+}
+.home-title{
+    text-align: center;
+   
+    background-color: #ff75a0;
+}
+
+@media only screen and (max-width: 600px) {
+    .home-title{
+        font-size:3vh;
+    }
+}

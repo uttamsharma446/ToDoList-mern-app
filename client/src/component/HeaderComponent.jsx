@@ -5,14 +5,9 @@ import {
     NavbarToggler,
     Nav,
     NavItem,
-    NavbarBrand,
+    NavbarBrand
 
-    DropdownToggle,
-    DropdownMenu,
-    Button,
-    Form,
-    Input,
-    FormGroup,
+
 
 } from "reactstrap";
 
@@ -20,14 +15,16 @@ import {
 import { NavLink, useParams } from "react-router-dom";
 import Axios from "axios";
 
-
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+const ID = cookies.get('ID');
 
 function HeaderComponent() {
 
     const [isToggle, setIsToggle] = useState(false);
     const [isLoginModalToggle, setLoginModalToggle] = useState(false);
-    const [loginDetails,setLoginDetails]=useState({
-        email:""
+    const [loginDetails, setLoginDetails] = useState({
+        email: ""
     })
     function handleToggle() {
         setIsToggle(!isToggle);
@@ -35,28 +32,29 @@ function HeaderComponent() {
     const handleLoginBtn = () => {
         setLoginModalToggle(!isLoginModalToggle);
     }
-    const handleLogin=(event)=>
-    {
-       alert(loginDetails.email);
-       Axios.get("http://localhost:5000/user/finde",loginDetails)
-       .then(res=>{console.log(res.data)})
-       .catch(res=>{console.log(res.message)})
-      event.preventDefault();
+    const handleLogin = (event) => {
+        alert(loginDetails.email);
+        Axios.get("http://localhost:5000/user/finde", loginDetails)
+            .then(res => { console.log(res.data) })
+            .catch(res => { console.log(res.message) })
+        event.preventDefault();
     }
-    const handleChange=(event)=>
-    {
-        const {value,name}=event.target;
+    const handleChange = (event) => {
+        const { value, name } = event.target;
         setLoginDetails({
-              email:value
+            email: value
         })
     }
-
+const handleLogout=()=>{
+    cookies.remove("ID");
+    window.location="/"
+}
     return <React.Fragment>
 
         <Navbar color="light" light expand="md">
-            <NavbarBrand> <NavLink to="/" className="nav-link"> 
-            <i class="fa fa-list-ol" aria-hidden="true"></i>
-              </NavLink></NavbarBrand>
+            <NavbarBrand> <NavLink to="/" className="nav-link">
+                <i class="fa fa-list-ol" aria-hidden="true"></i>
+            </NavLink></NavbarBrand>
             <NavbarToggler onClick={handleToggle} />
             <Collapse isOpen={isToggle} navbar>
 
@@ -64,13 +62,19 @@ function HeaderComponent() {
                     <NavItem >
                         <NavLink className="nav-link" to="/" > Home </NavLink>
                     </NavItem>
-                   
-                    
-                   
+                    {!ID && <NavItem >
+                        <NavLink className="nav-link" to="/login" >Login</NavLink>
+                    </NavItem>}
+                    {ID&&<NavItem >
+                        <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
+                    </NavItem> }
+
+
+
                 </Nav>
             </Collapse>
         </Navbar>
-        
+
     </React.Fragment>
 
 }

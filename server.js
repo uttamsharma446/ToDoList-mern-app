@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const todoRoute = require("./Routes/todoRoute");
+const todoRoute = require("./Routes/AllRoute");
 const mongoose = require("mongoose");
 const path = require("path");
 var cors = require('cors');
@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
         }
 
     })
-
+//middle for all routes
 app.use("/", todoRoute);
 
 app.use(express.static(path.join(__dirname, "client", "build")))
