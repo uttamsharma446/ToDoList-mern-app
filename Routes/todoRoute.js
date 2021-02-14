@@ -17,19 +17,8 @@ router.post("/add-item",function(req,res){
     })
 });
 
-//to display all item 
-router.get("/",function(req,res){
-    todo.find(function(err,data){
-        if(!err)
-        {
-            res.send(data);
-        }
-        else
-        {
-            res.send(err);
-        }
-    })
-})
+
+
 //to delete a specific item for todo list
 router.delete("/item/:id",function(req,res){
     const _Id=req.params.id;

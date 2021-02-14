@@ -9,6 +9,7 @@
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build"
+    
   },
   "engines": {
     "node": "8.9.2"
@@ -24,4 +25,5 @@
     "path": "^0.12.7",
     "request": "^2.88.2"
   }
+  
 }
