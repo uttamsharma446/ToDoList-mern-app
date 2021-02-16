@@ -61,26 +61,25 @@ function Home() {
             {ID && <div className="row">
                 <div className="col-lg-5 col-md-12 col-sm-12 col-xs-12">
                     <div className="">
-                        <Form autocomplete="off" >
-                            <FormGroup>
-
+                      
+                           
 
                                 <form onSubmit={handleAddItem}>
                                     <Input className="same-line" type="text" name="item" onChange={handleChange} value={addItem.item} id="addItem" placeholder="Task.." />
-                                    <Button type="submit" className="add-btn" color="info"><i class="fa fa-plus" aria-hidden="true"></i> Add</Button>
+                                    <Button type="submit" className="add-btn" color="info"><i className="fa fa-plus" aria-hidden="true"></i> Add</Button>
 
                                 </form>
-                            </FormGroup>
+                         
 
-                        </Form>
+                      
 
                     </div>
                 </div>
                 <div className="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                     <ListGroup>
 
-                        {allToDoItem ? allToDoItem.map((data) => {
-                            return <ListGroupItem color="">{data}<Button style={{ float: "right" }} outline size="sm" color="danger"><i class="fa fa-times" aria-hidden="true"></i></Button> </ListGroupItem>
+                        {allToDoItem ? allToDoItem.map((data,index) => {
+                            return <ListGroupItem key={index} color="">{data}<Button style={{ float: "right" }} outline size="sm" color="danger"><i className="fa fa-times" aria-hidden="true"></i></Button> </ListGroupItem>
 
                         }) : <h1>No Items Added</h1>}
 

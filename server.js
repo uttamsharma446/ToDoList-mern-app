@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const todoRoute = require("./Routes/AllRoute");
 const mongoose = require("mongoose");
 const path = require("path");
+
 var cors = require('cors');
 app.use(cors());
 // app.use(bodyParser.urlencoded({extended:false}))

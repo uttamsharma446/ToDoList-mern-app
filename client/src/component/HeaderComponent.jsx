@@ -52,9 +52,9 @@ const handleLogout=()=>{
     return <React.Fragment>
 
         <Navbar color="light" light expand="md">
-            <NavbarBrand> <NavLink to="/" className="nav-link">
-                <i class="fa fa-list-ol" aria-hidden="true"></i>
-            </NavLink></NavbarBrand>
+            <NavLink to="/" className="nav-link">
+                <i className="fa fa-list-ol" aria-hidden="true"></i>
+            </NavLink>
             <NavbarToggler onClick={handleToggle} />
             <Collapse isOpen={isToggle} navbar>
 
