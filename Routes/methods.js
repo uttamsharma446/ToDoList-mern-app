@@ -8,40 +8,56 @@ module.exports = {
             password: password,
             name: name
         })
-        newUser.save((err, result) => {
-            if (!err) {
-                res.send(result);
+        userModal.findOne({username:username})
+        .then(result=>{
+            if(result)
+            {
+                const exist="exist";
+                res.send(exist);
             }
-            else {
-                res.send(err);
+            if(!result)
+            {
+                newUser.save()
+                .then(data => {
+                    res.send(data);
+                }).catch(err => {
+                    res.status(500).send({
+                        message: err.message || "Some error occurred while adding user"
+                    });
+                });
             }
-
         })
+        .catch(err=>{
+            res.status(500).send({
+                message: err.message || "Some error occurred while login a user"
+            });
+        })
+       
+       
+        
 
     },
     loginUser: (req, res) => {
         const {username,password}=req.body;
-        userModal.findOne({username:username,password:password}, (err, result) => {
-            if(!err)
-            {
-                res.send(result)
-            }
-            else
-            {
-                res.send(err)
-            }
+        userModal.findOne({username:username,password:password})
+        .then(result=>{
+            res.send(result)
+        })
+        .catch(err=>{
+            res.status(500).send({
+                message: err.message || "Some error occurred while login a user"
+            });
         })
     },
     allUser:(req,res)=>{
-        userModal.find({},(err,result)=>{
-            if(!err)
-            {
-                res.send(result);
-            }
-            else
-            {
-                res.send(err);
-            }
+        userModal.find()
+        .then(result=>{
+            res.send(result);
+        })
+        .catch(err=>{
+            res.status(500).send({
+                message: err.message || "Some error occurred while adding user"
+            });
         })
     },
     getItem:(req,res)=>{
