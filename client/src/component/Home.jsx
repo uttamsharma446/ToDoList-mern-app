@@ -15,7 +15,7 @@ function Home() {
     //to load all item from data using useEffect
     useEffect(() => {
         if (ID) {
-            Axios.get("http://localhost:5000/get-item/" + ID)
+            Axios.get("https://todoappbyus.herokuapp.com/get-item/" + ID)
                 .then(result => {
                     setAllToDoItem(result.data)
                 })
@@ -34,7 +34,7 @@ function Home() {
     }
     const handleAddItem = (e) => {
         if (ID) {
-            Axios.put("http://localhost:5000/addItem/" + ID, addItem)
+            Axios.put("https://todoappbyus.herokuapp.com/addItem/" + ID, addItem)
                 .then(d => {
                     console.log(d.data);
                 })
