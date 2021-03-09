@@ -68,7 +68,7 @@ function Login() {
     const handleRegister = (e) => {
 
 
-        Axios.post("http://localhost:5000/adduser", registerData)
+        Axios.post("https://todoappbyus.herokuapp.com/adduser", registerData)
             .then(result => {
                 if (result.data) {
                     if (result.data == "exist") {
