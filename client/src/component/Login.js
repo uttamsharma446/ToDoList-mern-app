@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Cookies from 'universal-cookie';
 import Axios from "axios";
-
+import todoimg from "../Images/todoimg.png" 
 import "./main.css";
 function Login() {
     const cookies = new Cookies();
@@ -9,8 +9,13 @@ function Login() {
         username: "",
         password: "",
     });
-    const [statusStyle,setStatusStyle]=useState({
-        color:"red"
+    const [statusStyle, setStatusStyle] = useState({
+        color: "#046582"
+    })
+    const [err, setErr] = useState({
+        email: "",
+        password: "",
+        name: ""
     })
     const [registerData, setRegisterData] = useState({
         name: "",
@@ -21,40 +26,71 @@ function Login() {
     const [getId, setId] = useState("");
     const [status, setStatus] = useState("");
     const handleLogin = (e) => {
-
-        try {
-            Axios.post("https://todoappbyus.herokuapp.com/login", loginData)
-                .then(result => {
-                    if (result.data) {
-                        cookies.set("ID", result.data._id, { path: "/" });
-                        setStatus("login successfully")
-                        setStatusStyle({
-                            color:"green"
-                        })
-                        window.location = "/"
-                    }
-                    else {
-                        setStatusStyle({
-                            color:"red"
-                        })
-                        setStatus("username or password is incorrect")
-                    }
-
-                })
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username === "") {
+            setErr(prev => {
+                return {
+                    ...prev,
+                    email: "please enter your email"
+                }
+            })
         }
-
-        catch (err) {
-
+        else if (password === "") {
+            setErr(prev => {
+                return {
+                    ...prev,
+                    password: "please enter your password"
+                }
+            })
         }
-        setLoginData({
-            username: "",
-            password: ""
-        })
+        else {
+            try {
+                Axios.post("https://todoappbyus.herokuapp.com/login", loginData)
+                    .then(result => {
+                        if (result.data) {
+                            cookies.set("ID", result.data._id, { path: "/" });
+                            alert("login successfylly")
+                            setLoginData({
+                                username: "",
+                                password: ""
+                            })
+                            window.location = "/"
+                        }
+                        else {
+
+                            alert("email or password is incorrect!!");
+                        }
+
+                    })
+            }
+
+            catch (err) {
+
+            }
+        }
         e.preventDefault(false)
     }
     const handleLoginChange = (e) => {
-        setStatus("");
+
+
         const { value, name } = e.target;
+        if (name === "username") {
+            setErr(prev => {
+                return {
+                    ...prev,
+                    email: ""
+                }
+            })
+        }
+        if (name === "password") {
+            setErr(prev => {
+                return {
+                    ...prev,
+                    password: ""
+                }
+            })
+        }
         setLoginData(prev => {
             return {
                 ...prev,
@@ -72,19 +108,18 @@ function Login() {
             .then(result => {
                 if (result.data) {
                     if (result.data == "exist") {
-                        setStatusStyle({
-                            color:"green"
-                        })
-                        setStatus("username already exist")
+
+                        alert("email is already exist!!")
                     }
                     else {
+
+                        alert("Register Sucessfully!!");
                         setRegisterData({
                             name: "",
                             username: "",
                             password: "",
                         })
-                        setStatus("Register Succefully");
-                        window.location="/login"
+                        window.location = "/login"
                     }
 
 
@@ -120,59 +155,88 @@ function Login() {
     }
     return (
         <div className="container">
-        <small className="status" style={statusStyle}>{status}</small>
-            <div className="main login-form">
+            <small className="status" style={statusStyle}>{status}</small>
+            <div className="row">
+                <div className="col-lg-4">
+                <div className="main login-form">
                 {/* login panel */}
-                {!hideAndShow && <div className="Login-Panel">
-                    <h5 style={statusStyle}>Login here!!</h5>
-                    
+                {!hideAndShow && <div className="Login-Panel" id="login-panel">
+
+
                     <form onSubmit={handleLogin}>
-                        <label>Username</label> <br />
+
                         <input
+                            id="username"
                             name="username"
+                            placeholder="Email"
                             value={loginData.username}
                             onChange={handleLoginChange}
-                            className="login-input" type="text" /> <br />
-                        <label>Password</label> <br />
+                            className="login-input" type="text" /><br />
+                        <small className="error-msg">{err.email}</small><br />
+
                         <input className="login-input"
                             name="password"
+                            id="password"
+                            placeholder="Password"
                             value={loginData.password}
-                            onChange={handleLoginChange} type="password" /><br></br>
+                            onChange={handleLoginChange} type="password" /><br />
+                        <small className="error-msg">{err.password}</small>
+                        <br />
                         <button type="submit"
 
-                            className="btnbtn btn1 btn-primary" >Login</button>
+                            className="btn btn1  btn-primary" >Login</button>
                     </form>
-                    <label style={{ fontSize: "2vh" }}>Not Register Yet? <label onClick={handleShowHide} style={{ color: "#1a508b", cursor: "pointer" }}>Sign Up Now!! </label>  </label>
+                    <div style={{textAlign:"center"}} >
+                        <small className="forget">Forgotten Password? </small>
+                        <button onClick={handleShowHide} className="btn newAccount btn-success" >Create New Account</button>
+
+                    </div>
                 </div>
                 }
-                {/* end of login panel  */}
-                {hideAndShow && <div className="Register-Panel">
-                    <h5 style={{ color: "#af0069", marginTop: "10px" }}>Register here!!</h5>
-                  
+                {/* end of registeration panel  */}
+                {hideAndShow && <div className="Register-Panel" id="login-panel">
+
+
                     <form onSubmit={handleRegister}>
-                        <label>Name</label> <br />
+
                         <input
                             name="name"
+                            placeholder="Name"
                             value={registerData.name}
                             onChange={handleRegisterChange}
                             className="login-input" type="text" /> <br />
-                        <label>Username</label> <br />
+                        <small className="error-msg">{err.password}</small>
+                        <br />
                         <input
                             name="username"
+                            placeholder="Email"
                             value={registerData.username}
                             onChange={handleRegisterChange}
                             className="login-input" type="text" /> <br />
-                        <label>Password</label> <br />
+                        <small className="error-msg">{err.password}</small>
+                        <br />
                         <input className="login-input"
                             name="password"
+                            placeholder="Password"
                             value={registerData.password}
-                            onChange={handleRegisterChange} type="password" /><br></br>
+                            onChange={handleRegisterChange} type="password" /><br />
+                        <small className="error-msg">{err.password}</small>
+                        <br />
                         <button type="submit" className="btnbtn btn1 btn-primary" >Register</button>
                     </form>
-                    <label style={{ fontSize: "2vh" }}>Already Register? <label onClick={handleShowHide} style={{ color: "#1a508b", cursor: "pointer" }}>Login Now!! </label>  </label>
+                    <label style={{ fontSize: "1.7vh" }}>Already Register? <label onClick={handleShowHide} style={{ color: "#1a508b", cursor: "pointer" }}>Login Now!! </label>  </label>
                 </div>}
             </div>
 
+                </div>
+                <div className="col-lg-8">
+                    <div className="show-feature">
+                    <img src={todoimg} width="30%" height="30%" /><hr/>
+                        <h3 className="msg">Add your Tasks in ToDo-List to remind you what to do next to complete!!</h3>
+                   
+                     </div>
+                </div>
+            </div>
         </div>
     )
 }
