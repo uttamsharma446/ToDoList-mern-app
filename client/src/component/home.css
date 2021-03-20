@@ -1,12 +1,50 @@
 .all-content{
-    padding:5%;
+  
 }
 .main{
-    margin:10%;
+   display:flex;
+   align-items: center;
   
+   justify-content: center;
+  
+}
+.list-box{
+   margin:20px 0px;
+   width:50%;
+   border:1px solid #dddddd;
+   padding:20px;
+   background-color: white;
+}
+#items{
+    font-size: 0.8rem;
+    display: inline-block;
    
 }
+#complete-item-check{
+    height:15px;
+    float:left;
+   color: #f8f5f1;
+    margin:0px 10px;
+    vertical-align:middle;
+}
+.input-box{
+    width:85%;
+    display: inline-block;
+}
+#add-item-form{
+    margin:10px 0px;
+}
+.todo-title{
+    text-align: center;
+    font-size:1rem;
+    font-weight:bold;
+    color:#00917c;
+}
 .add-btn{
-    margin:5% 0;
-    float:right;
+    display: inline-block;
+    width:10%;
+    margin:0px 5px;
+    text-align: center;
+    float: right;
+
 }

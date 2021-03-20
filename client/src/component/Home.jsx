@@ -6,7 +6,8 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 const ID = cookies.get('ID');
 function Home() {
-
+    const [count,setCount]=useState(0)
+    const [listItemStyle,setListItemStyle]=useState({});
     const [addItem, setItem] = useState({
         item: ""
     });
@@ -49,46 +50,66 @@ function Home() {
 
 
     }
+// when user is completed the task
 
+const handleCompleteCheck=(index)=>{
+    var item=document.getElementById("items");
+    console.log(item);
+   if(count===0)
+   {
+    setListItemStyle({
+        textDecoration:"line-through",
+        textDdecorationColor: "#bbbbbb",
+        color:"#bbbbbb"
+    })
+    setCount(1)
+   }
+   if(count===1)
+   {
+    setListItemStyle({})
+    setCount(0);
+   }
+}
 
     return (
-        <div className="container all-content">
-          <h3 className="home-title">Todo List </h3>
-            {!ID&&<div>
-                <h1>Please Login .......</h1>
-                <a style={{textDecoration:"none"}} className="btn btn-primary" href="/login">login</a>
-            </div>}
-            {ID && <div className="row">
-                <div className="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-                    <div className="">
-                      
-                           
+        <>
 
-                                <form onSubmit={handleAddItem}>
-                                    <Input className="same-line" type="text" name="item" onChange={handleChange} value={addItem.item} id="addItem" placeholder="Task.." />
-                                    <Button type="submit" className="add-btn" color="info"><i className="fa fa-plus" aria-hidden="true"></i> Add</Button>
+           
+            {
+                !ID && <div>
+                    <h1>Please Login .......</h1>
+                    <a style={{ textDecoration: "none" }} className="btn btn-primary" href="/login">login</a>
+                </div>
+            }
+            {
+                ID && <div className="main">
+                   
+                    <div className="list-box">
+                       <p className="todo-title">THINGS TO DO</p>
+                        <form id="add-item-form"  onSubmit={handleAddItem}>
+                            <Input className="input-box" type="text" name="item" onChange={handleChange} value={addItem.item}  placeholder="Add New.." />
+                            <Button type="submit" className="add-btn" color="info"><i className="fa fa-plus" aria-hidden="true"></i></Button>
 
-                                </form>
-                         
+                        </form>
 
-                      
 
+                        <ListGroup>
+
+                            {allToDoItem ? allToDoItem.map((data, index) => {
+                                return  <ListGroupItem id={"items"} className={"items"+index} style={listItemStyle} key={index} color=""><input onClick={()=>{handleCompleteCheck(index)}} id="complete-item-check" type="checkbox"/>{data}</ListGroupItem>
+
+                            }) : <h1>No Items Added</h1>}
+
+                        </ListGroup>
                     </div>
-                </div>
-                <div className="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-                    <ListGroup>
 
-                        {allToDoItem ? allToDoItem.map((data,index) => {
-                            return <ListGroupItem key={index} color="">{data}<Button style={{ float: "right" }} outline size="sm" color="danger"><i className="fa fa-times" aria-hidden="true"></i></Button> </ListGroupItem>
+                </div>}
 
-                        }) : <h1>No Items Added</h1>}
 
-                    </ListGroup>
-                </div>
 
-            </div>}
-        </div>
-    )
+
+
+        </>)
 }
 
 export default Home

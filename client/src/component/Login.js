@@ -50,6 +50,7 @@ function Login() {
                     .then(result => {
                         if (result.data) {
                             cookies.set("ID", result.data._id, { path: "/" });
+                            cookies.set("name",result.data.name)
                             alert("login successfylly")
                             setLoginData({
                                 username: "",

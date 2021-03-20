@@ -15,7 +15,7 @@
 .home-title{
     text-align: center;
      color:#fff;
-     border-radius:10%;
+     
     background-color: #ff75a0;
 }
 .error-msg{
@@ -62,4 +62,20 @@
     .show-feature{
         display: none;
     }
+    .list-box{
+        width:100%; 
+        padding: 5px;
+    
+    
+    }
+    .input-box{
+        width:80%;
+        height:20px;
+        display: inline-block;
+    }
+    .add-btn{
+        font-size:5px;
+        height:20px;
+    }
+    
 }

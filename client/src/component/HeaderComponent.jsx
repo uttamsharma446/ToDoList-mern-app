@@ -18,6 +18,7 @@ import Axios from "axios";
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 const ID = cookies.get('ID');
+const name=cookies.get("name");
 
 function HeaderComponent() {
 
@@ -65,13 +66,16 @@ const handleLogout=()=>{
                     {!ID && <NavItem >
                         <NavLink className="nav-link" to="/login" >Login</NavLink>
                     </NavItem>}
-                    {ID&&<NavItem >
-                        <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
-                    </NavItem> }
+                   
 
 
 
-                </Nav>
+                </Nav> 
+               {ID&&<>
+               <small style={{margin:"0px 10px"}}>Hello {name}! </small>
+                <li  style={{display:"inline-block",cursor:"pointer",float:"right"}} onClick={handleLogout}>Logout</li >
+
+               </>}
             </Collapse>
         </Navbar>
 
