@@ -47,7 +47,7 @@ function Todo() {
     }
 
     const handleDelete = (index) => {
-        Axios.delete(`http://localhost:3000/del-item/${ID}/${index}`)
+        Axios.delete(`https://todoappbyus.herokuapp.com/${ID}/${index}`)
         .then(result=>{
          
         })
