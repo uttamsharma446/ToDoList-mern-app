@@ -1,5 +1,5 @@
 const router=require("express").Router();
-const {addUser,loginUser, addItem,allUser,getItem, deleteUser} =require("./methods");
+const {addUser,loginUser, addItem,allUser,getItem, deleteUser, deleteItem} =require("./methods");
 const {userModal}=require("../Modal/userModal");
 
 router.post("/adduser",addUser);
@@ -11,4 +11,7 @@ router.get("/all-user",allUser);
 router.get("/get-item/:id",getItem);
 //delete all user
 router.delete("/delete",deleteUser);
+
+//delete a item from todo list
+router.delete("/del-item/:id/:index",deleteItem);
 module.exports=router;

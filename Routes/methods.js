@@ -75,7 +75,8 @@ module.exports = {
     },
     addItem: (req, res) => {
         const id=req.params.id;
-
+        const item=req.body.item;
+    
         userModal.updateOne({ _id:id},
             { $push: { items: req.body.item } }, (err, result) => {
                 if (!err) {
@@ -96,6 +97,30 @@ module.exports = {
             {
                 res.send(err);
             }
+        })
+    },
+    deleteItem:(req,res)=>{
+        const {id,index}=req.params;
+        userModal.findById(id)
+        .then(result=>{
+            if(result)
+            {
+                var arr=result.items;
+                 arr.splice(index,1);
+                result.items=arr;
+                result.save()
+                .then(r=>{
+                    res.send("deleted")
+                })
+                .catch(errr=>{
+                    res.send(errr)
+                })
+
+            }
+
+        })
+        .catch(err=>{
+            res.send(err);
         })
     }
 }
