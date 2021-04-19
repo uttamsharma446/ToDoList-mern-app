@@ -47,7 +47,7 @@ function Todo() {
     }
 
     const handleDelete = (index) => {
-        Axios.delete(`https://todoappbyus.herokuapp.com/${ID}/${index}`)
+        Axios.delete(`https://todoappbyus.herokuapp.com/del-item/${ID}/${index}`)
         .then(result=>{
          
         })
@@ -87,7 +87,7 @@ function Todo() {
     }
     return (
 
-        <>
+        <div>
 
 
 
@@ -118,7 +118,7 @@ function Todo() {
 
 
 
-        </>)
+        </div>)
 
     
 }

@@ -5,10 +5,10 @@ import Todo from './ToDo/Todo';
 function Home() {
  
 
-    return (<>
-      <Todo/>
+    return (<div className="container">
+     welcome to home page
     
-    </>)
+    </div>)
 }
 
 export default Home

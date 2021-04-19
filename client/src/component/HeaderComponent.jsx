@@ -63,16 +63,14 @@ const handleLogout=()=>{
                     <NavItem >
                         <NavLink className="nav-link" to="/" > Home </NavLink>
                     </NavItem>
-                    {!ID && <NavItem >
-                        <NavLink className="nav-link" to="/login" >Login</NavLink>
-                    </NavItem>}
+                  
                    
 
 
 
                 </Nav> 
                {ID&&<>
-               <small style={{margin:"0px 10px"}}>Hello {name}! </small>
+               <small style={{margin:"0px 10px"}}> {name}! </small>
                 <li  style={{display:"inline-block",cursor:"pointer",float:"right"}} onClick={handleLogout}>Logout</li >
 
                </>}

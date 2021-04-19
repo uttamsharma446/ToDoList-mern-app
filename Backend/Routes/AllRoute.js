@@ -1,12 +1,14 @@
 const router=require("express").Router();
 const {addUser,loginUser, addItem,allUser,getItem, deleteUser, deleteItem} =require("./methods");
 const {userModal}=require("../Modal/userModal");
+const { verification } = require("../Login/login");
 
 router.post("/adduser",addUser);
 router.post("/login",loginUser);
 router.put("/addItem/:id",addItem);
 //find all user
 router.get("/all-user",allUser);
+router.post("/verify",verification);
 //get Item
 router.get("/get-item/:id",getItem);
 //delete all user
