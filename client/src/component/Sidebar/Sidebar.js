@@ -6,17 +6,21 @@ function Sidebar() {
     return (
       
             <div id="sidebar" className="sidebar">
-             <div className="sidebar-items">
+             <div id="" className="sidebar-items">
              <ul>
-                <li>
-                 <a href="/todo">ToDo List</a>
-                </li>
-                <li>
-                <Link to="/">Notes</Link>
-                </li>
-                <li>
-                <Link to="/">Get/Take Money</Link>
-                </li>
+                 <Link className="sidebar-link"  to="/todo">
+                  <li>ToDo List</li>
+                 </Link>
+                 <Link className="sidebar-link" to="/">
+                  <li>Gave/Got Money</li>
+                 </Link>
+               
+                 <Link className="sidebar-link" to="/">
+                  <li>Notes</li>
+                 </Link>
+               
+            
+               
             </ul>
 
              </div>

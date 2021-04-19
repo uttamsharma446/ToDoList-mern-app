@@ -10,7 +10,8 @@ import {
 
 
 } from "reactstrap";
-
+import $ from "jquery";
+import Sidebar from './Sidebar/Sidebar'
 
 import { NavLink, useParams } from "react-router-dom";
 import Axios from "axios";
@@ -60,13 +61,16 @@ const handleMenubar=(a)=>{
     {
        bars.style.display="none";
        closeIcon.style.display="initial";
-       sidebar.style.display='inherit'   
+      
+       $("#sidebar").slideDown("slow");
+      
     }
     if(!a)
     {
         bars.style.display="flex";
         closeIcon.style.display="none";
-        sidebar.style.display='none'
+        
+        $("#sidebar").slideUp("slow");
     }
     
 }
@@ -76,14 +80,14 @@ const handleMenubar=(a)=>{
             
             <i className="fa fa-bars fa-lg" onClick={()=>{handleMenubar(true)}} style={{cursor:"pointer"}}  id="sidebar-icon" aria-hidden="true"></i>
             <i className="fa fa-times fa-lg" onClick={()=>{handleMenubar(false)}} style={{display:"none",cursor:"pointer"}} id="sidebar-close" aria-hidden="true"></i>
-          
+              Menu
             <NavbarToggler onClick={handleToggle} />
             <Collapse isOpen={isToggle} navbar>
 
                 <Nav className="mr-auto" navbar>
-                    <NavItem >
+                    {/* <NavItem >
                         <NavLink className="nav-link" to="/" > Home </NavLink>
-                    </NavItem>
+                    </NavItem> */}
                   
                    
 
@@ -97,7 +101,7 @@ const handleMenubar=(a)=>{
                </>}
             </Collapse>
         </Navbar>
-
+    <Sidebar/>
     </React.Fragment>
 
 }
