@@ -87,7 +87,7 @@ function Todo() {
     }
     return (
 
-        <div>
+        <div className='container'>
 
 
 
@@ -97,8 +97,8 @@ function Todo() {
                     <div className="list-box">
                         <p className="todo-title">THINGS TO DO</p>
                         <form id="add-item-form" onSubmit={handleAddItem}>
-                            <Input className="input-box" type="text" name="item" onChange={handleChange} value={addItem.item} placeholder="Add New.." />
-                            <Button type="submit" className="add-btn" color="info"><i className="fa fa-plus" aria-hidden="true"></i></Button>
+                            <Input className="input-box form-control" type="text" name="item" onChange={handleChange} value={addItem.item} placeholder="Add New.." />
+                            <Button type="submit" className="add-btn btn" color="info"><i className="fa fa-plus" aria-hidden="true"></i></Button>
 
                         </form>
 

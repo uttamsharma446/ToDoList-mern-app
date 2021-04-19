@@ -1,0 +1,40 @@
+.sidebar {
+    width:15%;
+    position: relative;
+    top:-10px;
+    background-color: #dbf6e9;
+    color: #000;
+    height:100%;
+    font-family: 'Poppins', sans-serif;
+    
+
+}
+/* .sidebar-items{
+   
+    background-color:red;
+   
+
+} */
+.sidebar ul{
+  margin: 0px;
+  padding: 0px;
+
+}
+.sidebar li{
+   list-style:none;
+   font-size:0.9rem;
+   margin:10px 0px;
+   margin-left:0px;
+   padding:10px;
+   cursor:pointer;
+   
+   
+
+}
+.sidebar li:hover{
+    background-color:#007580;
+    color:#fff;
+}
+#sidebar{
+    display: none;
+}

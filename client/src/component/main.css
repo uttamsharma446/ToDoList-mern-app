@@ -62,20 +62,25 @@
     .show-feature{
         display: none;
     }
-    .list-box{
-        width:100%; 
-        padding: 5px;
-    
-    
-    }
+  .list-box{
+   margin:20px 0px;
+   width:100%;
+   border:1px solid #dddddd;
+   padding:20px;
+   background-color: white;
+}
     .input-box{
-        width:80%;
-        height:20px;
+        width:85%;
+        height:initial;
         display: inline-block;
     }
     .add-btn{
-        font-size:5px;
-        height:20px;
+        font-size:initial;
+        height:initial;
     }
-    
+    .main{
+        display:initial;
+       
+       
+     }
 }

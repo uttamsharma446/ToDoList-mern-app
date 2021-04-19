@@ -50,12 +50,33 @@ const handleLogout=()=>{
     cookies.remove("ID");
     window.location="/login"
 }
+
+// handle sidebar 
+const handleMenubar=(a)=>{
+    var bars=document.getElementById("sidebar-icon");
+    var closeIcon=document.getElementById("sidebar-close");
+    var sidebar=document.getElementById("sidebar");
+    if(a)
+    {
+       bars.style.display="none";
+       closeIcon.style.display="initial";
+       sidebar.style.display='inherit'   
+    }
+    if(!a)
+    {
+        bars.style.display="flex";
+        closeIcon.style.display="none";
+        sidebar.style.display='none'
+    }
+    
+}
     return <React.Fragment>
 
-        <Navbar color="light" light expand="md">
-            <NavLink to="/" className="nav-link">
-                <i className="fa fa-list-ol" aria-hidden="true"></i>
-            </NavLink>
+        <Navbar style={{backgroundColor:"#dbf6e9"}}  expand="md">
+            
+            <i className="fa fa-bars fa-lg" onClick={()=>{handleMenubar(true)}} style={{cursor:"pointer"}}  id="sidebar-icon" aria-hidden="true"></i>
+            <i className="fa fa-times fa-lg" onClick={()=>{handleMenubar(false)}} style={{display:"none",cursor:"pointer"}} id="sidebar-close" aria-hidden="true"></i>
+          
             <NavbarToggler onClick={handleToggle} />
             <Collapse isOpen={isToggle} navbar>
 
