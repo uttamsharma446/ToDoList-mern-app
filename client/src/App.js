@@ -8,6 +8,7 @@ import {isLogin} from "../src/component/AllMethods";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import Todo from './component/ToDo/Todo';
+import GaveGotMoney from './component/Gave-Got/GaveGotMoney';
 const cookies = new Cookies();
 const ID = cookies.get('ID');
 
@@ -26,6 +27,9 @@ function App() {
         {!ID && <Route exact path="/login" exact component={Login} />}
         <Route exact path="/todo">
           {ID?<Todo/>:<Redirect to="/login"/>}
+        </Route>
+        <Route exact path="/gave-got-money">
+          {ID?<GaveGotMoney/>:<Redirect to="/login"/>}
         </Route>
         <Route path="*">
           <div style={{textAlign:"center"}}>

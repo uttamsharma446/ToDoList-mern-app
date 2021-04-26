@@ -11,7 +11,7 @@ function Sidebar() {
                  <Link className="sidebar-link"  to="/todo">
                   <li>ToDo List</li>
                  </Link>
-                 <Link className="sidebar-link" to="/">
+                 <Link className="sidebar-link" to="/gave-got-money">
                   <li>Gave/Got Money</li>
                  </Link>
                

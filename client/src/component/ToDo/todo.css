@@ -1,0 +1,45 @@
+.form-container{
+    position: relative;
+
+}
+.add-item-btn{
+    position: absolute;
+    right:0px;
+    border: 1px solid #00917c;
+}
+.todo-item-delete{
+    float:right;
+    color:red;
+    cursor:pointer;
+    font-size:1rem;
+    margin-left:2px;
+    position: absolute;
+    right: 30px;
+    top:9px;
+}
+.todo-item-edit{
+   
+    color:#0061a8;
+    cursor:pointer;
+    font-size:1rem;
+    margin-right:2px;
+    position: absolute;
+    right: 4px;
+    top:10px;
+}
+#items{
+   position: relative;
+}
+.itemName{
+    position: absolute;
+    top:10px;
+}
+.outline-btn1{
+    border:1px solid #00917c;
+   color:#00917c;
+
+}
+.outline-btn1:hover{
+    background-color:#00917c;
+    color:#fff;
+}

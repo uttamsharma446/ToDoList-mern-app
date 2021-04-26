@@ -10,7 +10,7 @@
 }
 .list-box{
    margin:20px 0px;
-   width:50%;
+   width:70%;
    border:1px solid #dddddd;
    padding:20px;
    background-color: white;
@@ -28,8 +28,9 @@
     vertical-align:middle;
 }
 .input-box{
-    width:85%;
+    width:100%;
     display: inline-block;
+    border: 1px solid #00917c;
 }
 #add-item-form{
     margin:10px 0px;

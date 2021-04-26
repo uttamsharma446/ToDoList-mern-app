@@ -42,6 +42,17 @@
     padding:20%;
     text-align: center;
 }
+
+/* put content in center */
+.center-content{
+    display: flex;
+   
+    justify-content: center;
+
+}
+
+
+
 @media only screen and (max-width: 600px) {
     .home-title{
         font-size:3vh;
@@ -69,11 +80,7 @@
    padding:20px;
    background-color: white;
 }
-    .input-box{
-        width:85%;
-        height:initial;
-        display: inline-block;
-    }
+   
     .add-btn{
         font-size:initial;
         height:initial;
